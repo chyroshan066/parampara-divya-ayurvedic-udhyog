@@ -359,7 +359,8 @@ p {
 /* navmenu css start */
 
 .ayur-menu-wrapper {
-    position: relative; /* Changed from absolute to relative */
+    /* position: relative;  */
+    position: absolute;
     content: '';
     left: 0;
     right: 0;
