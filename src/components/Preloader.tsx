@@ -1,23 +1,3 @@
-// export const Preloader = () => (
-//   <div className="ayur-loader">
-//     <div className="ayur-spin">
-//       <img src="/images/loader.gif" alt="loader" />
-//     </div>
-//   </div>
-// );
-
-
-
-
-
-
-
-
-
-
-
-
-
 "use client";
 
 import { useEffect, useState } from "react";
@@ -27,11 +7,15 @@ export const Preloader = () => {
   const [fading, setFading] = useState(false);
 
   useEffect(() => {
-    const hideLoader = () => setFading(true);
+    const minDisplayTime = 800; // ms — tune to taste
+    const start = Date.now();
 
-    // If all resources already finished loading before this effect runs
-    // (e.g. fast connection, cached assets), fire immediately — otherwise
-    // wait for the same 'load' event the original jQuery code used.
+    const hideLoader = () => {
+      const elapsed = Date.now() - start;
+      const remaining = Math.max(0, minDisplayTime - elapsed);
+      setTimeout(() => setFading(true), remaining);
+    };
+
     if (document.readyState === "complete") {
       hideLoader();
     } else {

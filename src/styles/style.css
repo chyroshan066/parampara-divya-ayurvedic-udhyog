@@ -359,7 +359,7 @@ p {
 /* navmenu css start */
 
 .ayur-menu-wrapper {
-    position: absolute;
+    position: relative; /* Changed from absolute to relative */
     content: '';
     left: 0;
     right: 0;
@@ -372,6 +372,11 @@ p {
     z-index: 9;
     box-shadow: 2px 4px 22px 0px #0000000A;
     border-radius: 0 0 30px 30px;
+}
+
+.ayur-menu-logo img {
+    max-height: 65px;
+    width: auto;
 }
 
 .ayur-navmenu-wrapper {

@@ -152,6 +152,9 @@
 }
 
 @media(max-width:991px) {
+    .ayur-menu-logo img {
+        max-height: 45px;
+    }
     .ayur-banner-slider .swiper-button-prev {
         left: 1%;
     }
