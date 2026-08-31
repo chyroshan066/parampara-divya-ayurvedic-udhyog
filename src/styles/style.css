@@ -825,6 +825,18 @@ li.ayur-has-menu a svg {
     padding: 11px 10px 8px;
 }
 
+.ayur-tpro-toprow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 14px 0 16px;
+}
+
+.ayur-tpro-toprow .ayur-tpro-price {
+    padding: 0;
+}
+
 .ayur-tpro-text h3,
 .ayur-tpro-text h3 a {
     font-size: 18px;
