@@ -1,4 +1,5 @@
 import { About } from "@/components/About";
+import { Achievement } from "@/components/Achievement";
 import { Banner } from "@/components/Banner";
 import { Care } from "@/components/Care";
 import { Header } from "@/components/Header";
@@ -14,6 +15,7 @@ export default function Home() {
     <Care />
     <TopProducts />
     <About />
+    <Achievement />
     </>
   );
 }
