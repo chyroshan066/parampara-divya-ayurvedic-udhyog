@@ -4,6 +4,7 @@ import { Banner } from "@/components/Banner";
 import { Care } from "@/components/Care";
 import { Header } from "@/components/Header";
 import { Preloader } from "@/components/Preloader";
+import { Team } from "@/components/Team";
 import { Testimonial } from "@/components/Testimonial";
 import { TopProducts } from "@/components/TopProducts";
 import { Why } from "@/components/Why";
@@ -20,6 +21,7 @@ export default function Home() {
     <Achievement />
     <Why />
     <Testimonial />
+    <Team />
     </>
   );
 }
