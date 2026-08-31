@@ -1,3 +1,4 @@
+import { About } from "@/components/About";
 import { Banner } from "@/components/Banner";
 import { Care } from "@/components/Care";
 import { Header } from "@/components/Header";
@@ -12,6 +13,7 @@ export default function Home() {
     <Banner/>
     <Care />
     <TopProducts />
+    <About />
     </>
   );
 }
