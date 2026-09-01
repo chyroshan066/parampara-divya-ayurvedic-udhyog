@@ -2,6 +2,7 @@ import { About } from "@/components/About";
 import { Achievement } from "@/components/Achievement";
 import { Banner } from "@/components/Banner";
 import { Care } from "@/components/Care";
+import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Preloader } from "@/components/Preloader";
 import { Team } from "@/components/Team";
@@ -22,6 +23,7 @@ export default function Home() {
     <Why />
     <Testimonial />
     <Team />
+    <Footer />
     </>
   );
 }

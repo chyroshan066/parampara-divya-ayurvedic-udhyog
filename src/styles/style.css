@@ -1761,6 +1761,11 @@ a.likeproduct img.like {
     background-color: var(--ayur-white-color);
 }
 
+.ayur-footer-logo img {
+    max-height: 55px;
+    width: auto;
+}
+
 .ayur-footer-logosec p {
     color: var(--ayur-footertext-color);
     padding: 10px 0 25px;

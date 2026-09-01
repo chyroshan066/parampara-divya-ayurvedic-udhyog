@@ -4,3 +4,4 @@ export * from "./care-items";
 export * from "./products";
 export * from "./testimonials";
 export * from "./team";
+export * from "./contact";
