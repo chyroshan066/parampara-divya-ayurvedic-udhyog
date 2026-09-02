@@ -1,5 +1,9 @@
-export const About = () => (
-    <div className="ayur-bgcover ayur-about-sec">
+interface AboutProps {
+  marginTopValue?: string | number;
+}
+
+export const About = ({ marginTopValue }: AboutProps) => (
+    <div className="ayur-bgcover ayur-about-sec" style={{ marginTop: marginTopValue }}>
         <div className="container">
             <div className="row">
                 <div className="col-lg-6 col-md-12 col-sm-12">
