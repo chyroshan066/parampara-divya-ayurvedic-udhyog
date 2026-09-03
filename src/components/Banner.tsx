@@ -102,11 +102,9 @@ export const Banner = () => {
                 We Are Here To Give You The Best <span>Herb Products</span>{" "}
               </h1>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud.
+                Pure, natural, and crafted with care — our herbal products bring the healing power of nature straight to your everyday wellness routine.
               </p>
-              <a href="shop.html" className="ayur-btn">
+              <a href="/shop" className="ayur-btn">
                 Shop Now
               </a>
             </div>

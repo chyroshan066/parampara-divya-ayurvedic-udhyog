@@ -19,9 +19,8 @@ export const About = ({ marginTopValue }: AboutProps) => (
                     <div className="ayur-heading-wrap ayur-about-head">
                         <h5>Who We Are</h5>
                         <h3>The Natural Way To Achieving Balance And Optimal Health</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                        <a href="about.html" className="ayur-btn">Know More</a>
+                        <p>Parampara Divya Ayurved Udhyog blends age-old Ayurvedic tradition with modern quality standards to bring you authentic, natural wellness solutions. With over 10 years of experience and a dedicated manufacturing unit in Meghauli, Chitwan, we craft every product with care and purity. Reach us at our Kathmandu office in Pipalbot, Boudha, for consultations and support on your journey to holistic health.</p>
+                        {/* <a href="about.html" className="ayur-btn">Know More</a> */}
                     </div>
                 </div>
             </div>

@@ -4,7 +4,9 @@ export const Contact = () => (
       <div className="ayur-contactpage-box">
         <div className="ayur-contact-map">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2822.7806761080233!2d-93.29138368446431!3d44.96844997909819!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x52b32b6ee2c87c91%3A0xc20dff2748d2bd92!2sWalker+Art+Center!5e0!3m2!1sen!2sus!4v1514524647889"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3531.894235842704!2d85.36133587423706!3d27.720551624911174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb197bd3686a41%3A0xbaad8e64eb67d9eb!2sParampara%20Divya%20Ayurvedic%20%7C%20Ayurvedic%20Clinic%20in%20Boudha%2C%20Kathmandu!5e0!3m2!1sen!2snp!4v1788407150239!5m2!1sen!2snp"
+            loading="lazy"
+            referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
           />
         </div>
@@ -12,9 +14,8 @@ export const Contact = () => (
           <div className="ayur-contact-heading">
             <h3>Get in touch with us</h3>
             <p>
-              Get latest news in your inbox. Consectetur adipiscing
-              elitadipiscing elitse ddo eiusmod tempor incididunt ut labore et
-              dolore.
+              Have a question about our products or services? Reach out to
+              us and our team will get back to you as soon as possible.
             </p>
           </div>
           <div className="ayur-contact-form-wrapper">

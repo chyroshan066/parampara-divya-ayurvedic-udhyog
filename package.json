@@ -1,18 +1,24 @@
 {
-  "name": "purwanchal-vet-pharma",
+  "name": "parampara-divya-avyurvedic-udhyog",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "create-admin": "node --env-file=.env scripts/create-admin.mjs"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@hookform/resolvers": "^5.2.2",
+    "@neondatabase/serverless": "^1.1.0",
+    "@phosphor-icons/react": "^2.1.10",
     "@vercel/analytics": "^1.5.0",
+    "bcryptjs": "^3.0.3",
+    "cloudinary": "^2.11.0",
     "clsx": "^2.1.1",
+    "jose": "^6.2.10",
     "next": "^16.0.10",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
@@ -23,6 +29,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
+    "@types/bcryptjs": "^2.4.6",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

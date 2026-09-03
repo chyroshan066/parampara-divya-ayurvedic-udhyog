@@ -2,30 +2,30 @@ const WHYUS = [
   {
     img: "/images/why/why-icon1.webp",
     title: "100 % Organic",
-    subTitle: "Duis aute irure dolor in reprehenderit in voluptate velit",
+    subTitle: "Sourced from natural herbs and plants, free from harmful chemicals",
   },
   {
     img: "/images/why/why-icon2.webp",
     title: "Best Quality",
-    subTitle: "Duis aute irure dolor in reprehenderit in voluptate velit",
+    subTitle: "Crafted with strict quality checks to ensure purity in every product",
   },
   {
     img: "/images/why/why-icon3.webp",
     title: "Hygienic Product",
-    subTitle: "Duis aute irure dolor in reprehenderit in voluptate velit",
+    subTitle: "Manufactured in a clean, controlled environment for your safety",
   },
   {
     img: "/images/why/why-icon4.webp",
     title: "Health Care",
-    subTitle: "Duis aute irure dolor in reprehenderit in voluptate velit",
+    subTitle: "Formulated to support long-term wellness, not just quick relief",
   },
 ];
 
 const WHYTEXT = [
-  "Quis nostrud was exercitation.",
-  "Quis nostrud was exercitation.",
-  "Quis nostrud was exercitation.",
-  "Quis nostrud was exercitation.",
+  "Authentic Ayurvedic formulations",
+  "100% natural and herbal ingredients",
+  "No harmful chemicals or additives",
+  "Trusted by customers for over 10 years",
 ];
 
 export const Why = () => (
@@ -35,7 +35,7 @@ export const Why = () => (
         <div className="col-lg-12 col-md-12 col-sm-12">
           <div className="ayur-heading-wrap ayur-why-head">
             <h5>Best For You</h5>
-            <h3>Why Pure Ayurveda</h3>
+            <h3>Why Parampara Divya Ayurved</h3>
           </div>
         </div>
       </div>
@@ -59,12 +59,7 @@ export const Why = () => (
           <div className="ayur-why-textheading">
             <h3>Solve Your Problem with The Power of Nature</h3>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit,it's sed
-              do eiusmod tempor incididunt ut labore et dolore was a magna
-              aliqua.Ut enim ad minim veniam,quis nostrud exercitation that is
-              ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-              irure dolor in to reprehenderit in voluptate velit esse cillum
-              dolore eu fugiat nulla pariatur.
+              At Parampara Divya Ayurved, we believe true healing comes from nature. Every product we craft draws on time-tested Ayurvedic knowledge, combined with modern manufacturing standards, to bring you remedies that are safe, effective, and free from harmful side effects. Whether you're looking to manage a specific health concern or simply improve your everyday wellbeing, our formulations are designed to work with your body, not against it.
             </p>
             <ul>
               {WHYTEXT.map((text, index) => (
@@ -75,44 +70,16 @@ export const Why = () => (
               ))}
             </ul>
             <p>
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur.
+              From our manufacturing unit in Meghauli, Chitwan, to households across Nepal, we remain committed to delivering Ayurvedic
+              solutions rooted in tradition and backed by consistent quality, so you can trust what you put into your body.
             </p>
             <div className="ayur-why-btn">
-              <a href="services.html" className="ayur-btn">
+              <a href="/services" className="ayur-btn">
                 Read More
               </a>
             </div>
           </div>
         </div>
-        {/* <div className="col-lg-12 col-md-12 col-sm-12">
-          <div className="ayur-video-section">
-            <div className="ayur-video-img">
-              <img src="/images/video-bg.webp" alt="img" />
-              <a
-                href="javascript:void(0)"
-                className="ayur-video-playicon"
-                id="popup"
-              >
-                <img src="/images/play-icon.svg" alt="icon" />
-              </a>
-              <div id="videoPopup1" className="ayur-popup">
-                <div className="ayur-popup-content">
-                  <span className="close" id="close">
-                    ×
-                  </span>
-                  <iframe
-                    src="https://www.youtube.com/embed/tw8amX5GdBI?si=PjyEnFipiFOXBXck" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin"
-                    frameBorder="0"
-                    allowFullScreen
-                  ></iframe>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> */}
       </div>
     </div>
     <div className="ayur-bgshape ayur-why-bgshape">

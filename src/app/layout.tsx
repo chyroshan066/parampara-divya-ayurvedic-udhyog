@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-// import "./globals.css";
 import "@/styles/bootstrap.min.css";
 import "@/styles/font-awesome.min.css";
 import "@/styles/select2.min.css";
@@ -7,12 +6,13 @@ import "@/styles/flatpickr.min.css";
 import "@/styles/swiper-bundle.min.css";
 import "@/styles/style.css";
 import "@/styles/responsive.css";
+import "@/styles/tailwind-admin.css";
 import AnalyticsWrapper from "@/utils/AnalyticsWrapper";
 import { archivo, inter } from "./fonts";
 import Script from "next/script";
-import { Preloader } from "@/components/Preloader";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
+import { SiteChrome } from "@/components/SiteChrome";
+import { cookies } from "next/headers";
+import { ADMIN_SESSION_COOKIE, verifySessionToken } from "@/utils/auth";
 
 export const metadata: Metadata = {
   title: "<website_title>",
@@ -102,11 +102,15 @@ export const viewport: Viewport = {
   maximumScale: 1,
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const token = cookieStore.get(ADMIN_SESSION_COOKIE)?.value;
+  const isAdminLoggedIn = token ? Boolean(await verifySessionToken(token)) : false;
+
   return (
     <html lang="en">
       <head>
@@ -122,10 +126,9 @@ export default function RootLayout({
         className={`${archivo.variable} ${inter.variable}`}
         suppressHydrationWarning={true}
       >
-        <Preloader />
-        <Header />
+        <SiteChrome isAdminLoggedIn={isAdminLoggedIn}>
         {children}
-        <Footer />
+        </SiteChrome>
         <AnalyticsWrapper />
 
         <Script src="/js/jquery.js" strategy="afterInteractive" />

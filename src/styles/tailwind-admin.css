@@ -1,0 +1,10 @@
+/* @import "tailwindcss"; */
+
+@import "tailwindcss/theme.css" layer(theme) prefix(tw);
+@import "tailwindcss/utilities.css" layer(utilities) prefix(tw);
+
+@theme {
+  --color-primary: var(--ayur-primary-color);
+  --color-primary-hover: #b9765f;
+  --color-primary-light: var(--ayur-primary-lightcolor);
+}
