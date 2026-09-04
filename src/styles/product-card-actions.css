@@ -1,0 +1,136 @@
+/* Product card: quantity stepper + Add to Cart / Buy actions */
+
+.ayur-tpro-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.ayur-tpro-qty {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    width: fit-content;
+    padding: 4px 10px;
+    border: 1px solid var(--ayur-border-color);
+    border-radius: 22px;
+    background-color: var(--ayur-primary-lightcolor);
+}
+
+.ayur-qty-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border-radius: 50%;
+    border: 1px solid var(--ayur-primary-color);
+    background-color: var(--ayur-white-color);
+    color: var(--ayur-primary-color);
+    font-size: 18px;
+    line-height: 1;
+    font-weight: 600;
+    font-family: "Inter", sans-serif;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+
+.ayur-qty-btn:hover:not(:disabled) {
+    background-color: var(--ayur-primary-color);
+    color: var(--ayur-white-color);
+}
+
+.ayur-qty-btn:disabled {
+    border-color: var(--ayur-borderbox-color);
+    background-color: var(--ayur-borderbox-color);
+    color: var(--ayur-text-color);
+    cursor: not-allowed;
+}
+
+.ayur-qty-value {
+    min-width: 22px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: "Inter", sans-serif;
+    color: var(--ayur-banheading-color);
+}
+
+.ayur-tpro-cta-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.ayur-tpro-cta-group .ayur-btn {
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: 42px;
+    padding: 8px 6px;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.ayur-tpro-addcart-btn {
+    background-color: transparent;
+    border: 1px solid var(--ayur-para-color);
+    color: var(--ayur-para-color);
+}
+
+.ayur-tpro-addcart-btn svg path {
+    fill: currentColor;
+    transition: all .3s linear;
+}
+
+.ayur-tpro-addcart-btn:hover:not(:disabled) {
+    color: var(--ayur-white-color);
+    border-color: var(--ayur-banheading-color);
+}
+
+/* Deliberately no ::after override here — it inherits the same dark
+   radial-fill animation (height 0% -> 380%, background-color
+   var(--ayur-banheading-color)) that .ayur-btn already defines by
+   default, so hovering Add to Cart looks and moves identically to
+   hovering Buy. */
+
+.ayur-tpro-buy-btn {
+    background-color: var(--ayur-primary-color);
+    border-color: var(--ayur-primary-color);
+    color: var(--ayur-white-color);
+}
+
+.ayur-tpro-addcart-btn:disabled,
+.ayur-tpro-buy-btn:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+@media(max-width:1199px) {
+    .ayur-tpro-cta-group .ayur-btn {
+        font-size: 13px;
+        padding: 8px 4px;
+    }
+}
+
+@media(max-width:991px) {
+    .ayur-tpro-qty {
+        gap: 18px;
+    }
+}
+
+@media(max-width:575px) {
+    .ayur-tpro-cta-group {
+        flex-direction: column;
+    }
+    .ayur-tpro-cta-group .ayur-btn {
+        width: 100%;
+    }
+}

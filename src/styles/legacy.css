@@ -1,0 +1,29 @@
+/*
+ * All third-party / legacy public-site CSS lives in the "legacy" layer.
+ * tailwind-admin.css (imported after this file in layout.tsx) puts its
+ * rules in the "theme" and "utilities" layers.
+ *
+ * CSS Cascade Layers rule: a later-declared layer always beats an
+ * earlier one, REGARDLESS of selector specificity. The explicit
+ * `@layer legacy, theme, utilities;` line below locks that order in
+ * permanently, so it can't accidentally flip if import order in
+ * layout.tsx ever changes.
+ *
+ * Net effect: bootstrap.min.css's global resets (button, a, svg, etc.)
+ * and style.css's `button, svg, :focus { border: none; }` rule no
+ * longer beat Tailwind's `tw:` utility classes on the admin page —
+ * without touching a single selector in the vendor files themselves,
+ * and without affecting the public site at all (it has no `tw:`
+ * classes to conflict with).
+ */
+
+@layer legacy, theme, utilities;
+
+@import "./bootstrap.min.css" layer(legacy);
+@import "./font-awesome.min.css" layer(legacy);
+@import "./select2.min.css" layer(legacy);
+@import "./flatpickr.min.css" layer(legacy);
+@import "./swiper-bundle.min.css" layer(legacy);
+@import "./style.css" layer(legacy);
+@import "./responsive.css" layer(legacy);
+@import "./product-card-actions.css" layer(legacy);

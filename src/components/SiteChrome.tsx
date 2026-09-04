@@ -7,8 +7,13 @@ import { Footer } from "@/components/Footer";
 
 /**
  * Keeps a single root layout (shared fonts, metadata, analytics, scripts)
- * while still giving /admin/* its own look — the marketing Header/Footer/
- * Preloader only render for public site routes.
+ * while still giving /admin/* its own look — the marketing Header/Footer
+ * only render for public site routes.
+ *
+ * The Preloader is a special case: it also shows on /admin/login (so the
+ * login screen still gets a loading transition) but not on the rest of
+ * the protected /admin/* area — once you're past login there's no more
+ * need for it.
  *
  * This is a lighter-weight fix than a full Next.js "multiple root layouts"
  * split (separate <html>/<body> trees per top-level segment). If /admin
@@ -25,9 +30,16 @@ export function SiteChrome({
 }) {
   const pathname = usePathname();
   const isAdminRoute = pathname?.startsWith("/admin");
+  const isAdminLoginRoute = pathname === "/admin/login";
+  const showPreloader = !isAdminRoute || isAdminLoginRoute;
 
   if (isAdminRoute) {
-    return <>{children}</>;
+    return (
+      <>
+        {showPreloader && <Preloader />}
+        {children}
+      </>
+    );
   }
 
   return (

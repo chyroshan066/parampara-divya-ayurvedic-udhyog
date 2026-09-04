@@ -1,11 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import "@/styles/bootstrap.min.css";
-import "@/styles/font-awesome.min.css";
-import "@/styles/select2.min.css";
-import "@/styles/flatpickr.min.css";
-import "@/styles/swiper-bundle.min.css";
-import "@/styles/style.css";
-import "@/styles/responsive.css";
+import "@/styles/legacy.css";
 import "@/styles/tailwind-admin.css";
 import AnalyticsWrapper from "@/utils/AnalyticsWrapper";
 import { archivo, inter } from "./fonts";
@@ -15,14 +9,14 @@ import { cookies } from "next/headers";
 import { ADMIN_SESSION_COOKIE, verifySessionToken } from "@/utils/auth";
 
 export const metadata: Metadata = {
-  title: "<website_title>",
+  title: "Parampara Divya Ayurvedic Udhyog",
   description: "<website_description>",
   keywords: [
     "<search_keyword1>",
     "<search_keyword2>",
     // ..... and so on
   ],
-  authors: [{ name: "<website_name>" }],
+  authors: [{ name: "Parampara Divya Ayurvedic Udhyog" }],
   creator: "<website_name>",
   publisher: "<website_name>",
   metadataBase: new URL("https://www.udhyog.paramparadivyaayurved.com.np"),
@@ -85,14 +79,14 @@ export const metadata: Metadata = {
         url: "/images/preview.webp",
         width: 1200,
         height: 630,
-        alt: "<website_name> Preview",
+        alt: "Parampara Divya Ayurvedic Udhyog Preview",
       },
     ],
   },
   category: "<website_category>",
   classification: "<website_classification>",
   referrer: "origin-when-cross-origin",
-  applicationName: "<website_name>",
+  applicationName: "Parampara Divya Ayurvedic Udhyog",
   generator: "Next.js",
 };
 
