@@ -1,3 +1,42 @@
+/* Product card: uniform card/image size regardless of the source
+   image's own dimensions.
+
+   .ayur-tpro-img already has overflow:hidden (style.css), so cropping
+   is safe here without touching that base rule. This just fixes the
+   image container to a set ratio and makes .ayur-tpro-box a column
+   flex so every card in a row ends the same height, with the image
+   filling the same box on every card via object-fit: cover (crops to
+   fill, never stretches/distorts). */
+
+.ayur-tpro-box {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.ayur-tpro-img {
+    aspect-ratio: 1 / 1;
+    width: 100%;
+}
+
+.ayur-tpro-box .ayur-tpro-img > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.ayur-tpro-text {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+}
+
+.ayur-tpro-actions {
+    margin-top: auto;
+}
+
 /* Product card: quantity stepper + Add to Cart / Buy actions */
 
 .ayur-tpro-actions {

@@ -94,7 +94,7 @@ export const Header = () => {
                   </Link>
                 </div>
                 <div className="ayur-nav-user">
-                  <Link href="/profile">
+                  <Link href="/admin/dashboard">
                     <span className="icon">
                       <svg
                         width="15"

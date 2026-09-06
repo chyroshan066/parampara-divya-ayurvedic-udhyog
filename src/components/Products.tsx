@@ -59,7 +59,7 @@ export const Products = () => {
                         <a href="shop-single.html">{product.name}</a>
                       </h3>
                       <div className="ayur-tpro-price">
-                        <p>Rs.50</p>
+                        <p>Rs.{product.price}</p>
                       </div>
                     </div>
 
@@ -120,7 +120,7 @@ export const Products = () => {
                           onClick={() => handleBuyNow(quantity, product.name)}
                           disabled={isAtMinQuantity}
                         >
-                          Buy
+                          Order
                         </button>
                       </div>
                     </div>

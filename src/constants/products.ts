@@ -1,26 +1,32 @@
 export const PRODUCTS = [
     {
-        name: "Black Organic Tea",
-        img: "/images/products/product-img1.png",
+        name: "Chyawanprash",
+        img: "/images/products/product-img6.jpg",
+        price: 450,
     },
     {
-        name: "Loose Leaf Tea",
-        img: "/images/products/product-img2.png",
+        name: "Ashwagandha Capsules",
+        img: "/images/products/product-img2.jpg",
+        price: 320,
     },
     {
-        name: "Oolong Tea",
-        img: "/images/products/product-img3.png",
+        name: "Triphala Churna",
+        img: "/images/products/product-img3.jpg",
+        price: 180,
     },
     {
-        name: "Black Organic Tea",
-        img: "/images/products/product-img4.png",
+        name: "Neem Oil",
+        img: "/images/products/product-img4.jpg",
+        price: 250,
     },
     {
-        name: "Green Tea",
-        img: "/images/products/product-img5.png",
+        name: "Brahmi Tablets",
+        img: "/images/products/product-img5.jpg",
+        price: 380,
     },
     {
-        name: "Sencha Tea",
-        img: "/images/products/product-img6.png",
+        name: "Herbal Hair Oil (Bhringaraj)",
+        img: "/images/products/product-img6.jpg",
+        price: 290,
     },
 ];
