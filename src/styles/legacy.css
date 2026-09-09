@@ -29,4 +29,5 @@
 @import "./product-card-actions.css" layer(legacy);
 @import "./order-history.css" layer(legacy);
 @import "./empty-state.css" layer(legacy);
+@import "./admin-modal.css" layer(legacy);
 @import "./header-overrides.css" layer(legacy);

@@ -167,45 +167,6 @@
 //   );
 // }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import type { Metadata, Viewport } from "next";
 import "@/styles/legacy.css";
 import "@/styles/tailwind-admin.css";
@@ -220,6 +181,7 @@ import {
   CUSTOMER_SESSION_COOKIE,
   verifyCustomerSessionToken,
 } from "@/utils/customer-auth";
+import { ToastProvider } from "@/components/ToastProvider";
 
 export const metadata: Metadata = {
   title: "Parampara Divya Ayurvedic Udhyog",
@@ -352,14 +314,16 @@ export default async function RootLayout({
         className={`${archivo.variable} ${inter.variable}`}
         suppressHydrationWarning={true}
       >
-        <SiteChrome
-          isAdminLoggedIn={Boolean(adminSession)}
-          isCustomerLoggedIn={Boolean(customerSession)}
-          customerFirstName={customerSession?.firstName ?? null}
-          cartCount={cartCount}
-        >
-          {children}
-        </SiteChrome>
+        <ToastProvider>
+          <SiteChrome
+            isAdminLoggedIn={Boolean(adminSession)}
+            isCustomerLoggedIn={Boolean(customerSession)}
+            customerFirstName={customerSession?.firstName ?? null}
+            cartCount={cartCount}
+          >
+            {children}
+          </SiteChrome>
+        </ToastProvider>
         <AnalyticsWrapper />
 
         <Script src="/js/jquery.js" strategy="afterInteractive" />

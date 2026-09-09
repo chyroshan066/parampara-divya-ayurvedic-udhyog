@@ -12,6 +12,8 @@
 //   const [firstName, setFirstName] = useState("");
 //   const [lastName, setLastName] = useState("");
 //   const [email, setEmail] = useState("");
+//   const [phone, setPhone] = useState("");
+//   const [address, setAddress] = useState("");
 //   const [password, setPassword] = useState("");
 //   const [confirmPassword, setConfirmPassword] = useState("");
 //   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -33,7 +35,7 @@
 //       const res = await fetch("/api/auth/register", {
 //         method: "POST",
 //         headers: { "Content-Type": "application/json" },
-//         body: JSON.stringify({ firstName, lastName, email, password }),
+//         body: JSON.stringify({ firstName, lastName, email, phone, address, password }),
 //       });
 
 //       const data = await res.json();
@@ -104,6 +106,34 @@
 //                     placeholder="Enter your email..."
 //                     value={email}
 //                     onChange={(e) => setEmail(e.target.value)}
+//                     required
+//                   />
+//                 </div>
+
+//                 <div className={styles.formGroup}>
+//                   <label htmlFor="phone">Phone Number</label>
+//                   <input
+//                     id="phone"
+//                     type="tel"
+//                     autoComplete="tel"
+//                     className={styles.input}
+//                     placeholder="98XXXXXXXX"
+//                     value={phone}
+//                     onChange={(e) => setPhone(e.target.value)}
+//                     required
+//                   />
+//                 </div>
+
+//                 <div className={styles.formGroup}>
+//                   <label htmlFor="address">Address</label>
+//                   <input
+//                     id="address"
+//                     type="text"
+//                     autoComplete="street-address"
+//                     className={styles.input}
+//                     placeholder="Street, city, district..."
+//                     value={address}
+//                     onChange={(e) => setAddress(e.target.value)}
 //                     required
 //                   />
 //                 </div>
@@ -204,6 +234,21 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 "use client";
 
 import { useState } from "react";
@@ -211,9 +256,11 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Eye, EyeSlash } from "@phosphor-icons/react";
 import styles from "@/styles/auth-card.module.css";
+import { useToast } from "@/components/ToastProvider";
 
 export default function CustomerRegisterPage() {
   const router = useRouter();
+  const { showToast } = useToast();
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -251,6 +298,7 @@ export default function CustomerRegisterPage() {
         return;
       }
 
+      showToast("success", "Account created! Welcome aboard.");
       router.push("/");
       router.refresh();
     } catch {

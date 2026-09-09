@@ -1,0 +1,14 @@
+/* Used on the admin product Add/Edit modal (and reusable for any
+   future admin modal): the content can genuinely overflow and needs
+   to scroll, but the scrollbar track itself is visual clutter inside
+   a small popup. Scrolling still works via wheel, touch, or keyboard —
+   this only hides the bar. */
+
+.ayur-modal-scroll {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* old Edge/IE */
+}
+
+.ayur-modal-scroll::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, new Edge */
+}

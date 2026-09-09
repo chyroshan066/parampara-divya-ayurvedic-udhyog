@@ -2,10 +2,9 @@
 
 // import { useState } from "react";
 // import { usePathname, useRouter } from "next/navigation";
-// import { PRODUCTS } from "@/constants";
 // import { useProductQuantities } from "@/hooks/useProductQuantities";
+// import type { Product } from "@/types/product";
 
-// const MAX_PRODUCTS_DISPLAYED = 6;
 // const MAX_QUANTITY_PER_PRODUCT = 99;
 // const TOAST_DURATION_MS = 4000;
 // const SUCCESS_BUTTON_RESET_MS = 2500;
@@ -20,15 +19,23 @@
 // }
 
 // interface ProductsProps {
+//   products: Product[];
 //   isLoggedIn: boolean;
+//   /**
+//    * Caps how many products are shown, with a "View More" link for the
+//    * rest (used on the homepage's teaser section). Omit entirely to
+//    * show every product with no cap and no "View More" link — this is
+//    * what /shop does, since it's the full catalog page.
+//    */
+//   limit?: number;
 // }
 
-// export const Products = ({ isLoggedIn }: ProductsProps) => {
+// export const Products = ({ products, isLoggedIn, limit }: ProductsProps) => {
 //   const router = useRouter();
 //   const pathname = usePathname();
 
-//   const displayedProducts = PRODUCTS.slice(0, MAX_PRODUCTS_DISPLAYED);
-//   const hasMoreProducts = PRODUCTS.length > MAX_PRODUCTS_DISPLAYED;
+//   const displayedProducts = limit ? products.slice(0, limit) : products;
+//   const hasMoreProducts = limit ? products.length > limit : false;
 
 //   const { getQuantity, increaseQuantity, decreaseQuantity } = useProductQuantities({
 //     min: 0,
@@ -79,7 +86,7 @@
 //   const handleAddToCart = async (
 //     productId: string,
 //     productName: string,
-//     productImg: string,
+//     productImg: string | null,
 //     unitPrice: number,
 //     quantity: number
 //   ) => {
@@ -121,10 +128,10 @@
 
 //       setCartStatus((prev) => ({ ...prev, [productId]: "success" }));
 //       showToast("success", "Added to cart!");
-//       // Re-renders the server components on this route — including
+//       // Re-renders server components on this route — including
 //       // layout.tsx's cartCount query — so the header badge picks up
 //       // the new total immediately instead of waiting for the next
-//       // navigation. Cheap: no full page reload, just a server fetch.
+//       // navigation.
 //       router.refresh();
 //       setTimeout(() => clearCartButtonStatus(productId), SUCCESS_BUTTON_RESET_MS);
 //     } catch {
@@ -136,7 +143,7 @@
 //   const handleOrder = async (
 //     productId: string,
 //     productName: string,
-//     productImg: string,
+//     productImg: string | null,
 //     unitPrice: number,
 //     quantity: number
 //   ) => {
@@ -195,11 +202,8 @@
 //           </div>
 //         </div>
 //         <div className="row">
-//           {displayedProducts.map((product, index) => {
-//             // Names aren't guaranteed unique (see PRODUCTS), so the index
-//             // is used as the id for now. Swap for a real product id/slug
-//             // once PRODUCTS carries one.
-//             const productId = String(index);
+//           {displayedProducts.map((product) => {
+//             const productId = product.id;
 //             const quantity = getQuantity(productId);
 //             const isAtMinQuantity = quantity <= 0;
 //             const status = orderStatus[productId] ?? "idle";
@@ -211,7 +215,10 @@
 //               <div key={productId} className="col-lg-4 col-md-6 col-sm-6">
 //                 <div className="ayur-tpro-box">
 //                   <div className="ayur-tpro-img">
-//                     <img src={product.img} alt="img" />
+//                     <img
+//                       src={product.image_url ?? "/images/products/placeholder.jpg"}
+//                       alt={product.name}
+//                     />
 //                   </div>
 //                   <div className="ayur-tpro-text">
 //                     <div className="ayur-tpro-toprow">
@@ -259,8 +266,8 @@
 //                             handleAddToCart(
 //                               productId,
 //                               product.name,
-//                               product.img,
-//                               product.price,
+//                               product.image_url,
+//                               Number(product.price),
 //                               quantity
 //                             )
 //                           }
@@ -293,8 +300,8 @@
 //                             handleOrder(
 //                               productId,
 //                               product.name,
-//                               product.img,
-//                               product.price,
+//                               product.image_url,
+//                               Number(product.price),
 //                               quantity
 //                             )
 //                           }
@@ -387,6 +394,11 @@
 
 
 
+
+
+
+
+
 "use client";
 
 import { useState } from "react";
@@ -394,7 +406,6 @@ import { usePathname, useRouter } from "next/navigation";
 import { useProductQuantities } from "@/hooks/useProductQuantities";
 import type { Product } from "@/types/product";
 
-const MAX_PRODUCTS_DISPLAYED = 6;
 const MAX_QUANTITY_PER_PRODUCT = 99;
 const TOAST_DURATION_MS = 4000;
 const SUCCESS_BUTTON_RESET_MS = 2500;
@@ -411,14 +422,34 @@ interface Toast {
 interface ProductsProps {
   products: Product[];
   isLoggedIn: boolean;
+  /**
+   * Caps how many products are shown, with a "View More" link for the
+   * rest (used on the homepage's teaser section). Omit entirely to
+   * show every product with no cap and no "View More" link — this is
+   * what /shop does, since it's the full catalog page.
+   */
+  limit?: number;
+  /**
+   * Whether to render the "Medicine / Our Top Products" heading above
+   * the grid. Defaults to true (the homepage teaser). /shop passes
+   * false — it already has its own page heading via Breadcrumb, and
+   * doesn't need a second "Our Top Products" label repeated above a
+   * page that IS the full products list.
+   */
+  showHeading?: boolean;
 }
 
-export const Products = ({ products, isLoggedIn }: ProductsProps) => {
+export const Products = ({
+  products,
+  isLoggedIn,
+  limit,
+  showHeading = true,
+}: ProductsProps) => {
   const router = useRouter();
   const pathname = usePathname();
 
-  const displayedProducts = products.slice(0, MAX_PRODUCTS_DISPLAYED);
-  const hasMoreProducts = products.length > MAX_PRODUCTS_DISPLAYED;
+  const displayedProducts = limit ? products.slice(0, limit) : products;
+  const hasMoreProducts = limit ? products.length > limit : false;
 
   const { getQuantity, increaseQuantity, decreaseQuantity } = useProductQuantities({
     min: 0,
@@ -576,14 +607,16 @@ export const Products = ({ products, isLoggedIn }: ProductsProps) => {
   return (
     <div className="ayur-bgcover ayur-topproduct-sec">
       <div className="container">
-        <div className="row">
-          <div className="col-lg-12 col-md-12 col-sm-12">
-            <div className="ayur-heading-wrap">
-              <h5>Medicine</h5>
-              <h3>Our Top Products</h3>
+        {showHeading && (
+          <div className="row">
+            <div className="col-lg-12 col-md-12 col-sm-12">
+              <div className="ayur-heading-wrap">
+                <h5>Medicine</h5>
+                <h3>Our Top Products</h3>
+              </div>
             </div>
           </div>
-        </div>
+        )}
         <div className="row">
           {displayedProducts.map((product) => {
             const productId = product.id;
