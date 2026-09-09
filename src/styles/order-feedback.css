@@ -1,0 +1,16 @@
+/* Order placement feedback (success/error message under the buttons) */
+
+.ayur-tpro-order-feedback {
+    margin: 0;
+    font-size: 12px;
+    text-align: center;
+}
+
+.ayur-tpro-order-error {
+    color: #d64646;
+}
+
+.ayur-tpro-order-success {
+    color: var(--ayur-primary-color);
+    font-weight: 600;
+}

@@ -1,0 +1,224 @@
+/* Customer-facing Orders page (/orders). Reuses .ayur-cart-table for
+   the item rows inside each order (same look as the Cart page), and
+   adds the order-card shell + status badge + action buttons around
+   it. */
+
+.ayur-orderspage-wrapper {
+    padding: 60px 0;
+}
+
+.ayur-order-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Empty state (no orders placed yet) */
+
+.ayur-order-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 420px;
+    margin: 20px auto 40px;
+    padding: 48px 24px;
+    background-color: var(--ayur-white-color);
+    border: 1px solid var(--ayur-border-color);
+    border-radius: 20px;
+}
+
+.ayur-order-empty-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 96px;
+    height: 96px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    background-color: var(--ayur-primary-lightcolor);
+    color: var(--ayur-primary-color);
+}
+
+.ayur-order-empty-title {
+    margin: 0 0 10px;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ayur-heading-color);
+}
+
+.ayur-order-empty-text {
+    margin: 0 0 24px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ayur-text-color);
+}
+
+.ayur-order-empty-btn {
+    min-height: 46px;
+    padding: 10px 32px;
+}
+
+@media(max-width:575px) {
+    .ayur-order-empty {
+        padding: 36px 20px;
+        margin: 10px 0 30px;
+    }
+
+    .ayur-order-empty-icon {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+.ayur-order-card {
+    background-color: var(--ayur-white-color);
+    border: 1px solid var(--ayur-border-color);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.ayur-order-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 20px;
+    background-color: var(--ayur-primary-lightcolor);
+    border-bottom: 1px solid var(--ayur-border-color);
+}
+
+.ayur-order-date {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ayur-heading-color);
+}
+
+.ayur-order-id {
+    margin: 2px 0 0;
+    font-size: 12px;
+    color: var(--ayur-text-color);
+}
+
+.ayur-order-card .ayur-cart-table {
+    margin: 0;
+}
+
+.ayur-order-card .ayur-cart-table table {
+    margin: 0;
+}
+
+.ayur-order-card-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 16px 20px;
+    border-top: 1px solid var(--ayur-border-color);
+}
+
+.ayur-order-total {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ayur-heading-color);
+}
+
+.ayur-order-total span {
+    font-weight: 700;
+    color: var(--ayur-primary-color);
+}
+
+.ayur-order-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ayur-order-actions .ayur-btn {
+    min-height: 38px;
+    padding: 8px 20px;
+    font-size: 13px;
+}
+
+.ayur-order-actions .ayur-btn:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.ayur-order-cancel-btn {
+    background-color: transparent;
+    border: 1px solid var(--ayur-para-color);
+    color: var(--ayur-para-color);
+}
+
+.ayur-order-cancel-btn:hover:not(:disabled) {
+    color: var(--ayur-white-color);
+    border-color: var(--ayur-banheading-color);
+}
+
+.ayur-order-delete-btn {
+    background-color: transparent;
+    border: 1px solid #d64646;
+    color: #d64646;
+}
+
+.ayur-order-delete-btn:hover:not(:disabled) {
+    background-color: #d64646;
+    color: var(--ayur-white-color);
+}
+
+.ayur-order-status {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: capitalize;
+    white-space: nowrap;
+}
+
+.ayur-order-status-pending {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.ayur-order-status-processing {
+    background-color: #dbeafe;
+    color: #1d4ed8;
+}
+
+.ayur-order-status-shipped {
+    background-color: #e0e7ff;
+    color: #4338ca;
+}
+
+.ayur-order-status-delivered {
+    background-color: #d1fae5;
+    color: #047857;
+}
+
+.ayur-order-status-cancelled {
+    background-color: #fee2e2;
+    color: #b91c1c;
+}
+
+@media(max-width:575px) {
+    .ayur-order-card-head,
+    .ayur-order-card-foot {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .ayur-order-actions {
+        width: 100%;
+    }
+
+    .ayur-order-actions .ayur-btn {
+        flex: 1 1 0;
+    }
+}

@@ -173,3 +173,97 @@
         width: 100%;
     }
 }
+
+/* Row-to-row gutter for the product grid. Bootstrap's .row/.col only
+   handles horizontal gutters by default — with no vertical margin,
+   wrapped rows sit flush against each other (worse once card heights
+   vary at all, e.g. from a transient button state). Scoped to
+   .ayur-topproduct-sec so it never affects columns/rows elsewhere on
+   the site that happen to reuse the same Bootstrap classes. */
+.ayur-topproduct-sec .row > [class*="col-"] {
+    margin-bottom: 30px;
+}
+
+@media(max-width:575px) {
+    .ayur-topproduct-sec .row > [class*="col-"] {
+        margin-bottom: 20px;
+    }
+}
+
+/* Order-placement toast: fixed bottom-right, auto-dismisses (see
+   TOAST_DURATION_MS in Products.tsx), with a manual close button.
+   Deliberately NOT inline in the card — it can't affect card height or
+   row alignment since it's positioned relative to the viewport. */
+
+.ayur-toast-container {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 10px;
+    max-width: 320px;
+}
+
+.ayur-toast {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 14px 16px;
+    border-radius: 12px;
+    background-color: var(--ayur-white-color);
+    box-shadow: 3px 4px 29.6px 0px #00000026;
+    font-size: 14px;
+    font-weight: 500;
+    animation: ayur-toast-in .25s ease-out;
+}
+
+.ayur-toast-success {
+    border-left: 4px solid var(--ayur-primary-color);
+    color: var(--ayur-heading-color);
+}
+
+.ayur-toast-error {
+    border-left: 4px solid #d64646;
+    color: var(--ayur-heading-color);
+}
+
+.ayur-toast-message {
+    flex: 1;
+    margin: 0;
+}
+
+.ayur-toast-close {
+    background: none;
+    border: none;
+    padding: 0;
+    line-height: 1;
+    font-size: 18px;
+    color: var(--ayur-text-color);
+    cursor: pointer;
+}
+
+.ayur-toast-close:hover {
+    color: var(--ayur-heading-color);
+}
+
+@keyframes ayur-toast-in {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media(max-width:575px) {
+    .ayur-toast-container {
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        max-width: none;
+    }
+}

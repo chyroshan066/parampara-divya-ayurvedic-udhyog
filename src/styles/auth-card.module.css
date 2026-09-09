@@ -4,7 +4,14 @@
    itself, not a full-viewport takeover like the admin login page. */
 
 .section {
-  padding: 80px 0;
+  /* --ayur-header-offset is published by Header.tsx: it's the header's
+     own measured height while it's out-of-flow (position: absolute or
+     fixed), and 0 once it's in-flow (static or sticky) — a sticky/static
+     header already reserves its own space, so no extra compensation is
+     needed then. Falls back to 0px if the variable hasn't been set yet
+     (e.g. before JS runs), which just means the base 40px gap applies. */
+  padding-top: calc(var(--ayur-header-offset, 0px) + 40px);
+  padding-bottom: 80px;
 }
 
 .heading {
@@ -145,6 +152,11 @@
 .submitBtn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+.submitBtn:hover::after {
+  width: 300%;
+  height: 900%;
 }
 
 .switch {

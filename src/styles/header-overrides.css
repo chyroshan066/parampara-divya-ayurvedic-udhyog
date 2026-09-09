@@ -1,0 +1,181 @@
+/* Header positioning: `position: fixed` takes the header fully out of
+   document flow (same as the original `absolute` overlay), so nothing
+   below it gets pushed down automatically the way it was while the
+   header was `sticky`. --site-header-height (set live by Header.tsx,
+   via ResizeObserver on the real header element) restores that
+   pushed-down behavior — but only on pages where Header.tsx actually
+   mounts (public pages), via the ayur-has-fixed-header class it adds
+   to <body> on mount and removes on unmount. Pages that never render
+   this component — e.g. /admin/*, which has its own sidebar layout —
+   never get this class, so they can't inherit padding meant to
+   compensate for a header that isn't there. The 91px fallback only
+   applies for the brief instant before the JS measurement runs. */
+:root {
+    --site-header-height: 91px;
+}
+
+body.ayur-has-fixed-header {
+    padding-top: var(--site-header-height);
+}
+
+.ayur-menu-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    transition: top 0.3s ease-in-out;
+}
+
+/* Toggled by Header.tsx's scroll listener: hidden while scrolling
+   down, shown while scrolling up (or near the top of the page).
+
+   Deliberately animates `top`, not `transform`. A CSS `transform` on
+   this element (even a no-op translateY(0)) would make it the
+   containing block for any `position: fixed` descendants — and the
+   mobile nav flyout (.ayur-nav-menu in responsive.css) is exactly
+   that: a position:fixed panel meant to size itself against the full
+   viewport. With a transformed ancestor, it instead sizes itself
+   against this header bar, squashing the full-screen slide-in menu
+   into the header row. -120px is comfortably more than the header's
+   tallest rendered height across breakpoints, so it's always fully
+   off-screen when hidden. */
+.ayur-menu-wrapper.ayur-header-hidden {
+    top: -120px;
+}
+
+/* .ayur-banner-section (116px top padding) and .ayur-bread-section
+   (170px top padding), in style.css, already have their OWN built-in
+   compensation for the header baked in from the original design — so
+   the global body padding-top above would double them up. Pull them
+   back up by exactly the header's real height to cancel that global
+   push and restore their original, correctly-calibrated spacing. */
+.ayur-banner-section,
+.ayur-bread-section {
+    margin-top: calc(var(--site-header-height) * -1);
+}
+
+/* ---------------------------------------------------------------
+   Account icon (.ayur-nav-user) — dynamic login/dashboard/account
+   menu.
+
+   Three states, driven by props passed down from RootLayout via
+   SiteChrome:
+     - logged out           -> click opens a dropdown with Customer
+                                Login / Admin Login
+     - customer logged in   -> click opens a dropdown with My Orders
+                                / Logout, plus a small status dot on
+                                the icon
+     - admin logged in      -> no dropdown; icon links straight to
+                                /admin/dashboard, plus the same status
+                                dot
+
+   The dot is the only thing distinguishing "logged in" from "logged
+   out" at a glance without swapping the icon graphic itself (which
+   was hand-tuned to match the theme's line weight — reusing it across
+   all three states keeps that consistent).
+   --------------------------------------------------------------- */
+.ayur-nav-user {
+    position: relative;
+}
+
+.ayur-account-trigger {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.ayur-nav-userdot {
+    position: absolute;
+    top: -3px;
+    right: -6px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--ayur-primary-color);
+    border: 1.5px solid var(--ayur-white-color);
+}
+
+.ayur-account-dropdown {
+    position: absolute;
+    top: calc(100% + 18px);
+    right: 0;
+    min-width: 190px;
+    background-color: var(--ayur-white-color);
+    border: 1px solid var(--ayur-border-color);
+    border-radius: 12px;
+    box-shadow: 3px 4px 29.6px 0px #0000000f;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    z-index: 100;
+    animation: ayurAccountDropdownIn 0.15s ease-out;
+}
+
+@keyframes ayurAccountDropdownIn {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.ayur-account-dropdown-greeting {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ayur-heading-color);
+    padding: 4px 10px 10px;
+    margin: 0 0 4px;
+    border-bottom: 1px solid var(--ayur-border-color);
+    white-space: nowrap;
+}
+
+.ayur-account-dropdown-link {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--ayur-heading-color);
+    padding: 9px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.ayur-account-dropdown-link:hover {
+    background-color: var(--ayur-primary-lightcolor);
+    color: var(--ayur-primary-color);
+}
+
+.ayur-account-dropdown-admin {
+    color: var(--ayur-text-color);
+    font-size: 13px;
+}
+
+.ayur-account-dropdown-logout {
+    color: #d64646;
+}
+
+.ayur-account-dropdown-logout:hover {
+    background-color: #fdeaea;
+    color: #d64646;
+}
+
+@media (max-width: 480px) {
+    .ayur-account-dropdown {
+        right: -50px;
+    }
+}

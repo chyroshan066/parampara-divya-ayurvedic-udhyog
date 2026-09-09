@@ -2389,6 +2389,37 @@ span.post-like a {
     text-align: center;
 }
 
+.ayur-cart-scroll {
+    position: relative;
+    overflow-x: auto;
+    scrollbar-width: none;       /* Firefox */
+    -ms-overflow-style: none;    /* old Edge/IE */
+}
+
+.ayur-cart-scroll::-webkit-scrollbar {
+    display: none;               /* Chrome, Safari, new Edge */
+}
+
+.ayur-cart-scroll--hint::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 36px;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.95));
+    pointer-events: none;
+}
+
+.ayur-cart-table.table-responsive {
+    scrollbar-width: none;       /* Firefox */
+    -ms-overflow-style: none;    /* old Edge/IE */
+}
+
+.ayur-cart-table.table-responsive::-webkit-scrollbar {
+    display: none;               /* Chrome, Safari, new Edge */
+}
+
 .ayur-cart-table table.table {
     width: 100%;
 }
@@ -2416,6 +2447,13 @@ span.post-like a {
     width: 95px;
     height: 95px;
     object-fit: cover;
+}
+
+.ayur-cart-table tbody tr td .ayur-tab-delete {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
 }
 
 .ayur-cart-table tbody tr td .ayur-tab-delete img {

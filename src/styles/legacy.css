@@ -27,3 +27,6 @@
 @import "./style.css" layer(legacy);
 @import "./responsive.css" layer(legacy);
 @import "./product-card-actions.css" layer(legacy);
+@import "./order-history.css" layer(legacy);
+@import "./empty-state.css" layer(legacy);
+@import "./header-overrides.css" layer(legacy);
