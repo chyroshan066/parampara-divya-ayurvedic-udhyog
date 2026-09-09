@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { sql } from "@/utils/db";
 import { generateResetToken } from "@/utils/customer-auth";
-import { sendPasswordResetEmail } from "@/utils/mail";
+import { sendPasswordResetEmail } from "@/utils/email";
 
 const forgotPasswordSchema = z.object({
   email: z.string().email(),
