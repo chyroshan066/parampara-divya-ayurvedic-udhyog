@@ -7,6 +7,26 @@ import {
 import { Breadcrumb } from "@/components/Breadcrumb";
 import type { OrderWithItems } from "@/types/order";
 import { Orders } from "@/components/Orders";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "My Orders | Parampara Ayurvedic Clinic",
+  description: "View and track your order history for authentic Ayurvedic products and remedies purchased from Parampara Ayurvedic Clinic.",
+  robots: {
+    index: false,
+    follow: true,
+  },
+  alternates: {
+    canonical: "/orders",
+  },
+  openGraph: {
+    title: "My Orders | Parampara Ayurvedic Clinic",
+    description: "Track your Ayurvedic product purchases and order history with Parampara Ayurvedic Clinic.",
+    type: "website",
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}/orders`,
+    siteName: "Parampara Ayurvedic Clinic",
+  },
+};
 
 export default async function OrdersPage() {
   const cookieStore = await cookies();

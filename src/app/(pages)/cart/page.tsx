@@ -4,6 +4,26 @@ import { CUSTOMER_SESSION_COOKIE, verifyCustomerSessionToken } from "@/utils/cus
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { Cart } from "@/components/Cart";
 import type { CartItem } from "@/types/cart";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Shopping Cart | Parampara Ayurvedic Clinic",
+  description: "Review your selected herbal products and Ayurvedic remedies in your shopping cart before secure checkout at Parampara Ayurvedic Clinic.",
+  robots: {
+    index: false,
+    follow: true,
+  },
+  alternates: {
+    canonical: "/cart",
+  },
+  openGraph: {
+    title: "Shopping Cart | Parampara Ayurvedic Clinic",
+    description: "Review your selected herbal products and Ayurvedic remedies in your shopping cart.",
+    type: "website",
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}/cart`,
+    siteName: "Parampara Ayurvedic Clinic",
+  },
+};
 
 export default async function CartPage() {
   const cookieStore = await cookies();

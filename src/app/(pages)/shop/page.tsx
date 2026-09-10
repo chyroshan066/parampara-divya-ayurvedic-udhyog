@@ -8,6 +8,57 @@ import {
 } from "@/utils/customer-auth";
 import type { Product } from "@/types/product";
 import Link from "next/link";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Shop Authentic Ayurvedic Products | Parampara Ayurvedic Clinic",
+  description: "Browse and buy authentic herbal medicines, wellness oils, and natural health products online from Parampara Ayurvedic Clinic in Boudha, Kathmandu.",
+  keywords: [
+    "ayurvedic store kathmandu",
+    "ayurvedic store boudha",
+    "ayurvedic store chabahil",
+    "ayurvedic store gokarneshwor",
+    "ayurvedic store devkota sadak",
+    "buy ayurvedic medicine online nepal",
+    "ayurvedic clinic in kathmandu",
+    "best ayurvedic clinic in kathmandu",
+    "ayurvedic clinic in boudha",
+    "best ayurvedic clinic in boudha",
+    "ayurvedic clinic in chabahil",
+    "best ayurvedic clinic in chabahil",
+    "ayurvedic clinic in gokarneshwor",
+    "best ayurvedic clinic in gokarneshwor",
+    "ayurvedic clinic in devkota sadak",
+    "best ayurvedic clinic in devkota sadak",
+    "herbal products kathmandu",
+    "herbal products boudha",
+    "herbal products chabahil",
+    "herbal products gokarneshwor",
+    "herbal products devkota sadak",
+  ],
+  authors: [{ name: "Parampara Ayurvedic Clinic" }],
+  creator: "Parampara Ayurvedic Clinic",
+  publisher: "Parampara Ayurvedic Clinic",
+  alternates: {
+    canonical: "/shop",
+  },
+  openGraph: {
+    title: "Shop Ayurvedic Remedies & Products | Parampara Ayurvedic Clinic",
+    description: "Discover our selection of premium herbal remedies and authentic Ayurvedic products crafted for natural health and wellness.",
+    type: "website",
+    locale: "en_US",
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}/shop`,
+    siteName: "Parampara Ayurvedic Clinic",
+    images: [
+      {
+        url: "/images/preview.webp",
+        width: 1200,
+        height: 630,
+        alt: "Parampara Ayurvedic Clinic Online Shop",
+      },
+    ],
+  },
+};
 
 export default async function ShopPage() {
   const cookieStore = await cookies();
