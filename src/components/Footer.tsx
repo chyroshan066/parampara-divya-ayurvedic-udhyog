@@ -91,7 +91,19 @@ export const Footer = () => (
       <div className="row">
         <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
           <div className="ayur-copyright-para">
-            <p>Copyright © {new Date().getFullYear()}. All Right Reserved. Parampara Divya Ayurved</p>
+            <p>
+              Copyright © {new Date().getFullYear()}. All Right Reserved. Parampara Divya Ayurved
+              <span className="ayur-credit-sep"> | </span>
+              Crafted by{" "}
+              <a
+                href=""
+                // target="_blank"
+                rel="noopener noreferrer"
+                className="ayur-credit-link"
+              >
+                ORBIXXANO
+              </a>
+            </p>
           </div>
         </div>
       </div>

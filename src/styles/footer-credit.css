@@ -1,0 +1,19 @@
+/* Add alongside the existing .ayur-copyright-para rules in style.css */
+
+.ayur-copyright-para .ayur-credit-sep {
+  color: var(--ayur-footertext-color);
+  opacity: 0.5;
+  margin: 0 4px;
+}
+
+.ayur-copyright-para .ayur-credit-link {
+  color: var(--ayur-primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: opacity 0.2s ease;
+}
+
+.ayur-copyright-para .ayur-credit-link:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
