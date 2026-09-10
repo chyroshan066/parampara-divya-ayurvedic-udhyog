@@ -155,12 +155,12 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <head>
-        <script
+        {/* <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify("structured_data_from_constants"),
           }}
-        />
+        /> */}
       </head>
 
       <body
