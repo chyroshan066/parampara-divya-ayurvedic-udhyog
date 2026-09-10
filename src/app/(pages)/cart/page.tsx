@@ -1,33 +1,3 @@
-// import { Breadcrumb } from "@/components/Breadcrumb";
-// import { Cart } from "@/components/Cart";
-
-// export default function CartPage() {
-//   return <>
-//   <Breadcrumb />
-//   <Cart />
-//   </>;
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import { cookies } from "next/headers";
 import { sql } from "@/utils/db";
 import { CUSTOMER_SESSION_COOKIE, verifyCustomerSessionToken } from "@/utils/customer-auth";

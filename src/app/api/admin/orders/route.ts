@@ -1,7 +1,8 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse, after } from "next/server";
 import { z } from "zod";
 import { sql } from "@/utils/db";
 import { getCustomerSession } from "@/utils/customer-auth";
+import { sendAdminNewOrderEmail } from "@/utils/email";
 
 const orderItemSchema = z.object({
   productName: z.string().trim().min(1).max(200),
@@ -60,6 +61,26 @@ export async function POST(request: NextRequest) {
       )
     `;
   }
+
+  const total = items.reduce((sum, item) => sum + item.unitPrice * item.quantity, 0);
+
+  // Admin-only notification, so it doesn't need to block the checkout
+  // response the customer is waiting on. after() still guarantees it (and
+  // its retries) runs to completion instead of risking a silent drop like
+  // a bare fire-and-forget would on Vercel.
+  after(() =>
+    sendAdminNewOrderEmail({
+      orderId: order.id,
+      customerName: `${session.firstName} ${session.lastName}`,
+      customerEmail: session.email,
+      items: items.map((item) => ({
+        productName: item.productName,
+        unitPrice: item.unitPrice,
+        quantity: item.quantity,
+      })),
+      total,
+    })
+  );
 
   return NextResponse.json({ success: true, orderId: order.id });
 }
